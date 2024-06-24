@@ -1,0 +1,28 @@
+PODS:
+  - Alamofire (5.4.4)
+  - SnapKit (5.0.1)
+  - YandexMapKit (3.5.0):
+    - YandexRuntime (= 3.5.0)
+  - YandexRuntime (3.5.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - SnapKit (~> 5.0.0)
+  - YandexMapKit
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - SnapKit
+    - YandexMapKit
+    - YandexRuntime
+
+SPEC CHECKSUMS:
+  Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  YandexMapKit: ecd4b78de34a35df63d066ac299e6fd0fe46d1ba
+  YandexRuntime: 2d55244d06267106cf9b00c25a1e63f72a73b6fd
+
+PODFILE CHECKSUM: 5289c2b809ea690b5f0ae1095bb58f3775d3755c
+
+COCOAPODS: 1.15.2
