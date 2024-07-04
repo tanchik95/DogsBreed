@@ -10,9 +10,11 @@ import Photos
 
 protocol ProfileDisplayLogic: AnyObject {
 	func showAvatarURL(data: Data?)
+	func showError(message: String)
 }
 
 final class ProfileViewController: UIViewController, ProfileDisplayLogic {
+
 	let interactor: ProfileBusinessLogic
 
 	// MARK: Private Properties
@@ -34,13 +36,11 @@ final class ProfileViewController: UIViewController, ProfileDisplayLogic {
 
 		view.onTapAvatar = { [weak self] in
 			guard let self = self else { return }
-
 			self.avatarOptionsAlert()
 		}
 
 		view.onTapSaveButton  = { [weak self] in
 			guard let self = self else { return }
-
 			self.saveAvatar()
 		}
 
@@ -107,7 +107,7 @@ final class ProfileViewController: UIViewController, ProfileDisplayLogic {
 			actions: [
 				makePhoto,
 				choosePhoto,
-				cancel,
+				cancel
 			],
 			style: .actionSheet,
 			tintColor: UIColor.label)
@@ -137,8 +137,8 @@ final class ProfileViewController: UIViewController, ProfileDisplayLogic {
 		]
 
 		showAlert(
-			title: "Приложение не может использовать фотокамеру",
-			message: "Чтобы включить доступ к фотокамере , перейдите в Настройки → Carbery → Камера",
+			title: "",
+			message: "",
 			actions: actions,
 			style: .actionSheet,
 			tintColor: UIColor.label)
@@ -150,19 +150,23 @@ final class ProfileViewController: UIViewController, ProfileDisplayLogic {
 			return
 		}
 
-		AVCaptureDevice.requestAccess(for: .video) { [weak self] response in
-			guard let self = self else { return }
+		let videoAccessGranted = { [self] in
+			DispatchQueue.main.async {
+				self.presentCameraPickerController()
+			}
+		}
+
+		let videoAccessDenied = {
+			DispatchQueue.main.async {
+				self.presentPickerAlert(title: "Приложение не может использовать фотокамеру", message: "Чтобы включить доступ к фотокамере , перейдите в Настройки → DodsBreed → Камера")
+			}
+		}
+
+		AVCaptureDevice.requestAccess(for: .video) { response in
 			if response {
-				DispatchQueue.main.async { [weak self] in
-					guard let self = self else { return }
-					self.presentCameraPickerController()
-				}
+				videoAccessGranted()
 			} else {
-				DispatchQueue.main.async {
-					self.presentPickerAlert(
-						title: "Приложение не может использовать фотокамеру",
-						message: "Чтобы включить доступ к фотокамере , перейдите в Настройки → Carbery → Камера")
-				}
+				videoAccessDenied()
 			}
 		}
 	}
@@ -197,14 +201,14 @@ final class ProfileViewController: UIViewController, ProfileDisplayLogic {
 				DispatchQueue.main.async {
 					self.presentPickerAlert(
 						title: "Приложение не может использовать фото библиотеку",
-						message: "Чтобы включить доступ к фото библиотеке, перейдите в Настройки → Carbery → Фото")
+						message: "Чтобы включить доступ к фото библиотеке, перейдите в Настройки → DodsBreed → Фото")
 				}
 			}
 		}
 	}
 
 	private func presentLibraryController() {
-		DispatchQueue.main.async {[weak self] in
+		DispatchQueue.main.async { [weak self] in
 			let picker: UIImagePickerController = {
 				let picker = UIImagePickerController()
 				picker.delegate = self
@@ -220,10 +224,18 @@ final class ProfileViewController: UIViewController, ProfileDisplayLogic {
 
 	// При каждом входе в приложение генерируется случаный аватар по url, до момента нажатия кнопки "Сохранить"
 	func showAvatarURL(data: Data?) {
-		DispatchQueue.main.async {[weak self] in
-			self?.dogProfiveView?.avatarViewEditor.image = UIImage(data: data ?? Data())
+		guard let data = data else { return }
+		DispatchQueue.main.async { [weak self] in
+			self?.dogProfiveView?.avatarViewEditor.image = UIImage(data: data)
 			self?.dogProfiveView?.showView()
 		}
+	}
+
+	func showError(message: String) {
+		let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+		let okAction = UIAlertAction(title: "OK", style: .default)
+		alertController.addAction(okAction)
+		self.present(alertController, animated: true)
 	}
 }
 

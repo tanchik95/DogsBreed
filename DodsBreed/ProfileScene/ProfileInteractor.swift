@@ -26,15 +26,19 @@ final class ProfileInteractor {
 // MARK: - Business Logic
 extension ProfileInteractor: ProfileBusinessLogic {
 	func fetchRandomImage(request: Profile.ProfileScreen.Request) {
-		provider.getItem { (items, error) in
-			let result: Result<ProfileModel>
-			if let items = items {
-				result = .success(items)
-			} else if let error = error {
-				result = .failure(error.associatedValue)
+		provider.getItem { [weak self] item, error in
+			guard let self = self else { return }
+
+			var result: Result<ProfileModel>
+
+			if let error = error {
+				result = .failure(ProfileProviderError.getItemsFailed(withError: error))
+			} else if let item = item {
+				result = .success(item)
 			} else {
 				result = .failure(Profile.ProfileScreen.Response.Error.someError)
 			}
+
 			self.presenter.presentItem(response: .init(result: result))
 		}
 	}

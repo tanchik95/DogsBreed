@@ -21,18 +21,21 @@ extension ProfilePresenter: ProfilePresentationLogic {
 	func presentItem(response: Profile.ProfileScreen.Response) {
 		switch response.result {
 		case let .success(result):
-			let profile: ProfileViewModel = .init(
-				message: result.message,
-				status: result.status)
-
-			let stirng = profile.message
-			if let url = URL(string: stirng) {
-				if let data = try? Data(contentsOf: url) {
-					self.viewController?.showAvatarURL(data: data)
+			let urlString = result.message
+				viewController?.showError(message: "Invalid image URL")
+			if let url = URL(string: urlString) {
+				do {
+					let data = try Data(contentsOf: url)
+					viewController?.showAvatarURL(data: data)
+				} catch {
+					viewController?.showError(message: "Failed to load avatar image: \(error.localizedDescription)")
 				}
+			} else {
+				viewController?.showError(message: "Invalid image URL format")
 			}
+
 		case .failure:
-			print(errorMessage)
+			viewController?.showError(message: errorMessage)
 		}
 	}
 }
