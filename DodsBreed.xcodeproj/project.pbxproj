@@ -42,6 +42,11 @@
 		088A380D28F7FF68000105BB /* DogBreedsDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A380C28F7FF68000105BB /* DogBreedsDetailsView.swift */; };
 		088A381028F8016C000105BB /* LocationDetailsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A380F28F8016C000105BB /* LocationDetailsProvider.swift */; };
 		088A381328F9307E000105BB /* DogBreedsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A381228F9307E000105BB /* DogBreedsProvider.swift */; };
+		08A816522C36FB2100AE7772 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A816512C36FB2100AE7772 /* OnboardingView.swift */; };
+		08A816542C36FB3800AE7772 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A816532C36FB3800AE7772 /* OnboardingViewController.swift */; };
+		08A816562C36FBEB00AE7772 /* Animation - dog.json in Resources */ = {isa = PBXBuildFile; fileRef = 08A816552C36FBEB00AE7772 /* Animation - dog.json */; };
+		08A816582C37AFB900AE7772 /* Animation - dog and man.json in Resources */ = {isa = PBXBuildFile; fileRef = 08A816572C37AFB900AE7772 /* Animation - dog and man.json */; };
+		08A8165A2C37B65F00AE7772 /* OnboardingSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A816592C37B65F00AE7772 /* OnboardingSlideView.swift */; };
 		08D7D4A12C27FF6800D104D8 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D7D4A02C27FF6800D104D8 /* ProfileView.swift */; };
 		08D7D4A32C27FF7500D104D8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D7D4A22C27FF7500D104D8 /* ProfileViewController.swift */; };
 		08D7D4A52C27FF8500D104D8 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D7D4A42C27FF8500D104D8 /* ProfileInteractor.swift */; };
@@ -121,6 +126,11 @@
 		088A380C28F7FF68000105BB /* DogBreedsDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogBreedsDetailsView.swift; sourceTree = "<group>"; };
 		088A380F28F8016C000105BB /* LocationDetailsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsProvider.swift; sourceTree = "<group>"; };
 		088A381228F9307E000105BB /* DogBreedsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogBreedsProvider.swift; sourceTree = "<group>"; };
+		08A816512C36FB2100AE7772 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		08A816532C36FB3800AE7772 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		08A816552C36FBEB00AE7772 /* Animation - dog.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation - dog.json"; sourceTree = "<group>"; };
+		08A816572C37AFB900AE7772 /* Animation - dog and man.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation - dog and man.json"; sourceTree = "<group>"; };
+		08A816592C37B65F00AE7772 /* OnboardingSlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlideView.swift; sourceTree = "<group>"; };
 		08D7D4A02C27FF6800D104D8 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		08D7D4A22C27FF7500D104D8 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		08D7D4A42C27FF8500D104D8 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
@@ -222,6 +232,7 @@
 				08641D3728C4F8C300C345B8 /* AppDelegate.swift */,
 				080126F829D6CF750096B57C /* Extensions */,
 				08641D6728C5002600C345B8 /* Sourses */,
+				08A8164E2C36FAF500AE7772 /* OnboardingScene */,
 				08D7D49F2C27FF2900D104D8 /* ProfileScene */,
 				08641D8428C5E6C400C345B8 /* BreedDogsScene */,
 				088A380128F7FE8E000105BB /* DogBreedsDetailsScene */,
@@ -329,6 +340,18 @@
 				08641D9828C5FB2800C345B8 /* DogBreedsService.swift */,
 			);
 			path = Provider;
+			sourceTree = "<group>";
+		};
+		08A8164E2C36FAF500AE7772 /* OnboardingScene */ = {
+			isa = PBXGroup;
+			children = (
+				08A816572C37AFB900AE7772 /* Animation - dog and man.json */,
+				08A816552C36FBEB00AE7772 /* Animation - dog.json */,
+				08A816512C36FB2100AE7772 /* OnboardingView.swift */,
+				08A816532C36FB3800AE7772 /* OnboardingViewController.swift */,
+				08A816592C37B65F00AE7772 /* OnboardingSlideView.swift */,
+			);
+			path = OnboardingScene;
 			sourceTree = "<group>";
 		};
 		08D7D49F2C27FF2900D104D8 /* ProfileScene */ = {
@@ -574,6 +597,8 @@
 				08641D4428C4F8C400C345B8 /* LaunchScreen.storyboard in Resources */,
 				08641D4128C4F8C400C345B8 /* Assets.xcassets in Resources */,
 				08641D9328C5FAB200C345B8 /* DogBreedsData.json in Resources */,
+				08A816582C37AFB900AE7772 /* Animation - dog and man.json in Resources */,
+				08A816562C36FBEB00AE7772 /* Animation - dog.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -664,6 +689,7 @@
 				08D7D4AD2C27FFDC00D104D8 /* ProfileViewDataFlow.swift in Sources */,
 				08D7D4C32C282EB200D104D8 /* ProfileService.swift in Sources */,
 				08641D3C28C4F8C300C345B8 /* DogBreedsViewController.swift in Sources */,
+				08A8165A2C37B65F00AE7772 /* OnboardingSlideView.swift in Sources */,
 				088A37FE28F7F4C5000105BB /* UniqueIdentifiable.swift in Sources */,
 				08D7D4BF2C28125900D104D8 /* PlistHelper.swift in Sources */,
 				088A380928F7FF3E000105BB /* DogBreedsDetailsPresenter.swift in Sources */,
@@ -693,6 +719,7 @@
 				088A380D28F7FF68000105BB /* DogBreedsDetailsView.swift in Sources */,
 				08D7D4B02C2802AE00D104D8 /* ProfileViewModel.swift in Sources */,
 				08641D9D28C6010100C345B8 /* DogBreedsPresenter.swift in Sources */,
+				08A816522C36FB2100AE7772 /* OnboardingView.swift in Sources */,
 				0801270029D6CFE50096B57C /* Array+Extension.swift in Sources */,
 				08D7D4A12C27FF6800D104D8 /* ProfileView.swift in Sources */,
 				08D7D4C72C2875FF00D104D8 /* UIViewController+Extension.swift in Sources */,
@@ -700,6 +727,7 @@
 				08E77A4B29547DAF002EB211 /* DogBreedsDetailsViewModel.swift in Sources */,
 				08D7D4A72C27FF9100D104D8 /* ProfilePresenter.swift in Sources */,
 				08641D8628C5F3D800C345B8 /* DogBreedsView.swift in Sources */,
+				08A816542C36FB3800AE7772 /* OnboardingViewController.swift in Sources */,
 				0801270229D6D1080096B57C /* DogBreedsPreferencesView.swift in Sources */,
 				08641D9928C5FB2800C345B8 /* DogBreedsService.swift in Sources */,
 				08641D8328C527C500C345B8 /* DogBreedsBuilder.swift in Sources */,

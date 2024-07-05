@@ -9,6 +9,7 @@ target 'DodsBreed' do
   pod 'SnapKit', '~> 5.0.0'
   pod 'Alamofire'
   pod 'YandexMapKit' 
+  pod 'lottie-ios', '3.3.0'
   
 
 end

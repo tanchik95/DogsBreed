@@ -24,6 +24,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				presenter.viewController = controller
 				navigationController.pushViewController(controller, animated: true)
 			})
+		mainViewController.navigationItem.leftBarButtonItem = BlockBarButtonItem(
+			icon: UIImage(named: "animationDog") ?? UIImage(),
+			{
+				let controller = OnboardingViewController()
+				navigationController.pushViewController(controller, animated: true)
+			})
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
 
