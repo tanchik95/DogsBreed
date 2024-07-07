@@ -72,8 +72,8 @@ final class ProfileView: UIView {
 
 	 lazy var saveButton: UIButton = {
 		let button = UIButton()
-		button.setTitle("Сохранить", for: .normal)
-		button.addTarget(self, action: #selector(saveProfile), for: .touchUpInside)
+		 button.setTitle("Сохранить", for: .normal)
+		 button.addTarget(self, action: #selector(saveProfile), for: .touchUpInside)
 		 button.configuration?.cornerStyle = .medium
 		 button.backgroundColor = UIColor.orange
 		 button.isUserInteractionEnabled = true
@@ -129,6 +129,22 @@ final class ProfileView: UIView {
 		}
 	}
 
+	func pushBotton() {
+		let originalFrame = saveButton.frame
+		let center = saveButton.center
+
+		UIView.animate(withDuration: 0.2, animations: {
+			var frame = self.saveButton.frame
+			frame.size.width = frame.size.width - 20
+			frame.size.height = frame.size.height - 20
+
+			self.saveButton.frame = frame
+			self.saveButton.center = center
+		}) { (bool) in
+			self.saveButton.frame = originalFrame
+		}
+	}
+
 	@objc
 	private func avatarEditor(_ sender: UITextField) {
 		self.onTapAvatar?()
@@ -144,6 +160,7 @@ final class ProfileView: UIView {
 	private func saveProfile(_ sender: UITextField) {
 		nickname = nicknameTextField.text ?? ""
 		UserDefaults.standard.setNickname(nickname: nickname)
+		pushBotton()
 		saveButton.backgroundColor = .gray
 		saveButton.isUserInteractionEnabled = false
 		self.onTapSaveButton?()
