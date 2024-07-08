@@ -15,7 +15,8 @@ extension OnboardingView {
 		let pageControlInsets = UIEdgeInsets(top: 0.0, left: 16.0, bottom: 16.0, right: 16.0)
 		let lottieViewAnimationName = "Animation - dog and man"
 		let lottieSliderViewAnimationName = "Animation - dog"
-		let lottieViewSize = CGSize(width: 192.0, height: 192.0)
+		let lottieViewSize = CGSize(width: 150.0, height: 150.0)
+		let dogViewSize = CGSize(width: 200.0, height: 210.0)
 	}
 }
 
@@ -53,6 +54,13 @@ final class OnboardingView: UIView {
 		
 		return view
 	}()
+
+	private lazy var dogDraw: DogView = {
+		let view = DogView()
+
+		return view
+	}()
+
 
 	private lazy var lottieViewSlider: AnimationView = {
 		let view = AnimationView()
@@ -109,6 +117,7 @@ final class OnboardingView: UIView {
 		super.init(frame: frame)
 		
 		addSubview(lottieView)
+		addSubview(dogDraw)
 		addSubview(lottieViewSlider)
 		addSubview(scrollView)
 		scrollView.addSubview(slideStackView)
@@ -119,10 +128,15 @@ final class OnboardingView: UIView {
 
 	// MARK: Private Method
 	private func configureLayout() {
+		dogDraw.snp.makeConstraints { (make) in
+			make.centerX.equalToSuperview()
+			make.top.equalToSuperview().offset(96)
+			make.size.equalTo(viewMetrics.dogViewSize)
+		}
 
 		lottieView.snp.makeConstraints { (make) in
 			make.centerX.equalToSuperview()
-			make.top.equalToSuperview().offset(96)
+			make.top.equalTo(dogDraw.snp.bottom).offset(40)
 			make.size.equalTo(viewMetrics.lottieViewSize)
 		}
 
